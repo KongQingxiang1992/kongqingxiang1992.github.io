@@ -1,6 +1,6 @@
 # KQ Systems Lab
 
-这是一个可直接部署到 GitHub Pages 的静态个人网站。
+孔庆翔github静态网站
 
 ## 文件结构
 
