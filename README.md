@@ -1,3 +1,3 @@
 # kongqingxiang1992.github.io
 
-## This web is the ogrinal site for my github
+### This project is used to setup the terminal of my github 
