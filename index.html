@@ -1,76 +1,665 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-  <title>我的个人网站</title>
+    name="description"
+    content="KQ Systems Lab — 嵌入式系统、FPGA、机器人与 AI 应用个人作品网站"
+  />
+  <title>KQ Systems Lab</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      background: #f5f7fa;
-      color: #1f2937;
-    }
-
-    .container {
-      width: min(90%, 720px);
-      padding: 48px;
-      text-align: center;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    }
-
-    h1 {
-      margin-bottom: 16px;
-      font-size: 42px;
-    }
-
-    p {
-      margin-bottom: 28px;
-      line-height: 1.8;
-      color: #64748b;
-    }
-
-    a {
-      display: inline-block;
-      padding: 12px 24px;
-      color: white;
-      text-decoration: none;
-      background: #2563eb;
-      border-radius: 10px;
-    }
-
-    a:hover {
-      background: #1d4ed8;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <main class="container">
-    <h1>你好，我是孔庆翔</h1>
-    <h1>Hi，this is Kong Qingxiang </h3>
-    <p>
-      这是我通过 GitHub Pages 搭建的个人网站。
-      我主要关注嵌入式系统、机器人、FPGA 和软件开发。
-    </p>
+  <canvas id="networkCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <a href="https://github.com/你的GitHub用户名">
-      查看我的 GitHub
+  <header class="site-header">
+    <a class="brand" href="#hero" aria-label="返回首页">
+      <span class="brand-mark">KQ</span>
+      <span class="brand-text">SYSTEMS LAB</span>
     </a>
+
+    <nav class="desktop-nav" aria-label="主导航">
+      <a href="#about">关于</a>
+      <a href="#system-map">能力图谱</a>
+      <a href="#projects">项目</a>
+      <a href="#experience">经历</a>
+      <a href="#lab">实验室</a>
+      <a href="#contact">联系</a>
+    </nav>
+
+    <button class="menu-button" id="menuButton" aria-label="打开菜单">
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">关于</a>
+    <a href="#system-map">能力图谱</a>
+    <a href="#projects">项目</a>
+    <a href="#experience">经历</a>
+    <a href="#lab">实验室</a>
+    <a href="#contact">联系</a>
+  </div>
+
+  <main>
+    <!-- 01 HERO -->
+    <section class="hero section" id="hero">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            ENGINEERING SYSTEMS FOR THE REAL WORLD
+          </div>
+
+          <h1>
+            KONG<br />
+            <span>QINGXIANG</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            嵌入式系统 · FPGA · 机器人 · AI 应用
+          </p>
+
+          <p class="hero-description">
+            我关注硬件、通信、软件与产品之间的连接，
+            并将复杂系统转化为可运行、可验证、可交付的工程产品。
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">
+              查看项目
+              <span>↗</span>
+            </a>
+            <a class="button button-secondary" href="#system-map">
+              浏览能力图谱
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div>
+              <span class="meta-label">LOCATION</span>
+              <span class="meta-value">NANJING, CHINA</span>
+            </div>
+            <div>
+              <span class="meta-label">FOCUS</span>
+              <span class="meta-value">ROBOTICS · EMBEDDED · AI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="system-core">
+            <div class="orbit orbit-a"></div>
+            <div class="orbit orbit-b"></div>
+            <div class="orbit orbit-c"></div>
+
+            <div class="core-center">
+              <span class="core-kicker">SYSTEM</span>
+              <strong>KQ</strong>
+              <span class="core-status">ONLINE</span>
+            </div>
+
+            <button class="node node-1" data-label="FPGA">
+              <span></span>
+              FPGA
+            </button>
+            <button class="node node-2" data-label="ROS2">
+              <span></span>
+              ROS2
+            </button>
+            <button class="node node-3" data-label="RTOS">
+              <span></span>
+              RTOS
+            </button>
+            <button class="node node-4" data-label="AI">
+              <span></span>
+              AI
+            </button>
+            <button class="node node-5" data-label="CAN">
+              <span></span>
+              CAN
+            </button>
+          </div>
+
+          <div class="signal-panel">
+            <div class="panel-header">
+              <span>LIVE SIGNAL</span>
+              <span class="live-indicator">STREAMING</span>
+            </div>
+            <svg viewBox="0 0 600 130" preserveAspectRatio="none">
+              <polyline
+                class="signal-line"
+                points="0,70 30,70 45,35 60,105 75,70 120,70 145,20 165,120 185,70 250,70 270,44 285,96 300,70 355,70 375,30 395,110 415,70 470,70 490,45 505,95 520,70 600,70"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <span>SCROLL TO EXPLORE</span>
+        <div></div>
+      </div>
+    </section>
+
+    <!-- 02 ABOUT -->
+    <section class="section section-bordered" id="about">
+      <div class="section-heading reveal">
+        <span class="section-index">02</span>
+        <div>
+          <p class="section-kicker">ABOUT</p>
+          <h2>从底层通信到完整产品</h2>
+        </div>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-lead reveal">
+          <p>
+            我是一名系统型工程师，工作内容跨越嵌入式软件、FPGA、
+            高速通信、机器人控制与产品开发。
+          </p>
+          <p>
+            我擅长把分散的硬件、协议、算法和服务整合为完整系统，
+            并关注可靠性、实时性、可维护性与实际交付效果。
+          </p>
+        </div>
+
+        <div class="about-stats reveal">
+          <article>
+            <strong data-count="4">0</strong>
+            <span>核心技术方向</span>
+          </article>
+          <article>
+            <strong data-count="12">0</strong>
+            <span>系统级项目经验</span>
+          </article>
+          <article>
+            <strong data-count="100">0</strong>
+            <span>工程落地导向</span>
+            <small>%</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 SYSTEM MAP -->
+    <section class="section" id="system-map">
+      <div class="section-heading reveal">
+        <span class="section-index">03</span>
+        <div>
+          <p class="section-kicker">SYSTEM MAP</p>
+          <h2>技术能力图谱</h2>
+        </div>
+      </div>
+
+      <div class="map-shell reveal">
+        <div class="map-sidebar" role="tablist">
+          <button class="map-tab active" data-target="embedded">
+            <span>01</span>
+            Embedded
+          </button>
+          <button class="map-tab" data-target="fpga">
+            <span>02</span>
+            FPGA
+          </button>
+          <button class="map-tab" data-target="robotics">
+            <span>03</span>
+            Robotics
+          </button>
+          <button class="map-tab" data-target="product">
+            <span>04</span>
+            Product
+          </button>
+        </div>
+
+        <div class="map-content">
+          <article class="map-panel active" id="embedded">
+            <div class="map-panel-header">
+              <span>EMBEDDED SYSTEMS</span>
+              <span>01 / 04</span>
+            </div>
+            <h3>面向实时控制与可靠通信的嵌入式系统</h3>
+            <p>
+              覆盖 MCU、RTOS、Linux、设备驱动、通信协议与系统调试，
+              强调硬件约束下的稳定运行。
+            </p>
+            <div class="skill-nodes">
+              <span>C / C++</span>
+              <span>RT-Thread</span>
+              <span>Linux</span>
+              <span>Device Driver</span>
+              <span>TCP / UDP</span>
+              <span>OPC UA</span>
+            </div>
+          </article>
+
+          <article class="map-panel" id="fpga">
+            <div class="map-panel-header">
+              <span>FPGA SYSTEMS</span>
+              <span>02 / 04</span>
+            </div>
+            <h3>高速数据链路与可编程逻辑设计</h3>
+            <p>
+              聚焦 Verilog、LVDS、RGMII、MAC、时钟域处理、
+              帧协议与链路可靠性验证。
+            </p>
+            <div class="skill-nodes">
+              <span>Verilog</span>
+              <span>LVDS</span>
+              <span>RGMII</span>
+              <span>MAC / PHY</span>
+              <span>CDC</span>
+              <span>High-Speed Bus</span>
+            </div>
+          </article>
+
+          <article class="map-panel" id="robotics">
+            <div class="map-panel-header">
+              <span>ROBOTICS</span>
+              <span>03 / 04</span>
+            </div>
+            <h3>机器人底层控制、导航与执行系统</h3>
+            <p>
+              关注 ROS2、CAN/CANFD、电机闭环、传感器融合、
+              Nav2 与系统实时性。
+            </p>
+            <div class="skill-nodes">
+              <span>ROS2</span>
+              <span>Nav2</span>
+              <span>CAN / CANFD</span>
+              <span>Motor Control</span>
+              <span>TF</span>
+              <span>SLAM</span>
+            </div>
+          </article>
+
+          <article class="map-panel" id="product">
+            <div class="map-panel-header">
+              <span>PRODUCT ENGINEERING</span>
+              <span>04 / 04</span>
+            </div>
+            <h3>从技术原型到可用产品</h3>
+            <p>
+              覆盖微信小程序、Node.js、数据库、云部署、
+              WebSocket 与 AI API 集成。
+            </p>
+            <div class="skill-nodes">
+              <span>Mini Program</span>
+              <span>Node.js</span>
+              <span>MySQL</span>
+              <span>WebSocket</span>
+              <span>Cloud Deploy</span>
+              <span>AI API</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 PROJECTS -->
+    <section class="section section-bordered" id="projects">
+      <div class="section-heading reveal">
+        <span class="section-index">04</span>
+        <div>
+          <p class="section-kicker">SELECTED WORK</p>
+          <h2>代表项目</h2>
+        </div>
+      </div>
+
+      <div class="projects-list">
+        <article class="project-card reveal">
+          <div class="project-number">01</div>
+
+          <div class="project-content">
+            <div class="project-tags">
+              <span>PRODUCT SYSTEM</span>
+              <span>2026</span>
+            </div>
+            <h3>FIFA 世界杯中文数据平台</h3>
+            <p>
+              集成赛程、球队、球员、技术统计、实时比分与出线计算，
+              采用微信小程序、Node.js、SQLite/MySQL 和 WebSocket 构建。
+            </p>
+
+            <div class="project-stack">
+              <span>WeChat Mini Program</span>
+              <span>Node.js</span>
+              <span>MySQL</span>
+              <span>WebSocket</span>
+            </div>
+
+            <a href="#" class="project-link">
+              VIEW CASE STUDY
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="project-visual worldcup-visual" aria-label="世界杯项目示意图">
+            <div class="phone-shell">
+              <div class="phone-top"></div>
+              <div class="phone-screen">
+                <div class="app-header">MATCH CENTER</div>
+                <div class="match-card">
+                  <span>GER</span>
+                  <strong>2 : 1</strong>
+                  <span>ARG</span>
+                </div>
+                <div class="data-row"></div>
+                <div class="data-row short"></div>
+                <div class="mini-chart">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-number">02</div>
+
+          <div class="project-content">
+            <div class="project-tags">
+              <span>FPGA SYSTEM</span>
+              <span>2025</span>
+            </div>
+            <h3>FPGA 高速 LVDS 数据链路</h3>
+            <p>
+              构建 FT232H 到 FPGA、再到外设的高速数据通路，
+              实现帧同步、协议解析、CRC 校验与多模块分发。
+            </p>
+
+            <div class="project-stack">
+              <span>Verilog</span>
+              <span>LVDS</span>
+              <span>FT232H</span>
+              <span>CRC</span>
+            </div>
+
+            <a href="#" class="project-link">
+              VIEW CASE STUDY
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="project-visual fpga-visual" aria-label="FPGA 项目示意图">
+            <div class="chip">
+              <span>FPGA</span>
+            </div>
+            <div class="bus bus-left"></div>
+            <div class="bus bus-right"></div>
+            <div class="packet packet-1"></div>
+            <div class="packet packet-2"></div>
+            <div class="packet packet-3"></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-number">03</div>
+
+          <div class="project-content">
+            <div class="project-tags">
+              <span>ROBOTICS</span>
+              <span>2026</span>
+            </div>
+            <h3>ROS2 移动机器人底层控制系统</h3>
+            <p>
+              面向四轮移动机器人构建电机控制、编码器反馈、
+              CAN 通信、里程计、TF 与 Nav2 导航闭环。
+            </p>
+
+            <div class="project-stack">
+              <span>ROS2</span>
+              <span>Nav2</span>
+              <span>CANFD</span>
+              <span>Motor Control</span>
+            </div>
+
+            <a href="#" class="project-link">
+              VIEW CASE STUDY
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="project-visual robot-visual" aria-label="机器人项目示意图">
+            <div class="robot-body">
+              <div class="robot-eye"></div>
+              <div class="robot-wheel wheel-a"></div>
+              <div class="robot-wheel wheel-b"></div>
+            </div>
+            <div class="radar"></div>
+            <div class="path-line"></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-number">04</div>
+
+          <div class="project-content">
+            <div class="project-tags">
+              <span>AI PRODUCT</span>
+              <span>2026</span>
+            </div>
+            <h3>长篇小说 AI 编写器</h3>
+            <p>
+              面向 800–1000 章长篇小说，构建角色、世界观、剧情线、
+              章节状态与多模型 API 调度系统。
+            </p>
+
+            <div class="project-stack">
+              <span>LLM API</span>
+              <span>Prompt System</span>
+              <span>Knowledge Base</span>
+              <span>Workflow</span>
+            </div>
+
+            <a href="#" class="project-link">
+              VIEW CASE STUDY
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="project-visual ai-visual" aria-label="AI 项目示意图">
+            <div class="ai-terminal">
+              <div class="terminal-bar">
+                <span></span><span></span><span></span>
+              </div>
+              <p>&gt; loading story graph...</p>
+              <p>&gt; resolving character arcs...</p>
+              <p>&gt; chapter 042 generated</p>
+              <div class="typing-line"></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 05 EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section-heading reveal">
+        <span class="section-index">05</span>
+        <div>
+          <p class="section-kicker">EXPERIENCE</p>
+          <h2>工程经历</h2>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-line"><span></span></div>
+          <div class="timeline-content">
+            <span class="timeline-label">START</span>
+            <h3>Embedded Systems Engineer</h3>
+            <p>进入嵌入式系统、实时通信与设备控制领域。</p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-line"><span></span></div>
+          <div class="timeline-content">
+            <span class="timeline-label">5G / RFSoC / O-RAN</span>
+            <h3>无线通信与高速数据处理</h3>
+            <p>参与 DU/RU 物理层、RFSoC、帧同步与网络抓包分析。</p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-line"><span></span></div>
+          <div class="timeline-content">
+            <span class="timeline-label">FPGA / BUS</span>
+            <h3>高速总线与可编程逻辑</h3>
+            <p>聚焦 FPGA、LVDS、RGMII、CAN 与嵌入式协议系统。</p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-line"><span></span></div>
+          <div class="timeline-content">
+            <span class="timeline-label">CURRENT FOCUS</span>
+            <h3>Robotics · AI Tools · Product Engineering</h3>
+            <p>将底层工程能力拓展到机器人系统与 AI 原生产品。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 06 LAB -->
+    <section class="section section-bordered" id="lab">
+      <div class="section-heading reveal">
+        <span class="section-index">06</span>
+        <div>
+          <p class="section-kicker">CURRENT LAB</p>
+          <h2>正在构建</h2>
+        </div>
+      </div>
+
+      <div class="lab-grid">
+        <article class="lab-card reveal">
+          <div class="lab-card-head">
+            <span>LAB / 01</span>
+            <span class="status-pill">ACTIVE</span>
+          </div>
+          <h3>ROS2 移动机器人平台</h3>
+          <p>
+            Raspberry Pi + MCU + 编码器电机 + CAN/CANFD +
+            超声波传感器的完整控制与导航系统。
+          </p>
+          <div class="progress-track">
+            <span style="width: 64%"></span>
+          </div>
+          <div class="progress-meta">
+            <span>PROGRESS</span>
+            <span>64%</span>
+          </div>
+        </article>
+
+        <article class="lab-card reveal">
+          <div class="lab-card-head">
+            <span>LAB / 02</span>
+            <span class="status-pill">PROTOTYPE</span>
+          </div>
+          <h3>AI 小说工程系统</h3>
+          <p>
+            角色记忆、剧情状态、章节规划、模型切换与质量评估的可扩展工作流。
+          </p>
+          <div class="progress-track">
+            <span style="width: 42%"></span>
+          </div>
+          <div class="progress-meta">
+            <span>PROGRESS</span>
+            <span>42%</span>
+          </div>
+        </article>
+
+        <article class="lab-card reveal">
+          <div class="lab-card-head">
+            <span>LAB / 03</span>
+            <span class="status-pill">RESEARCH</span>
+          </div>
+          <h3>AI + MCU 边缘控制</h3>
+          <p>
+            探索 AI 芯片与 MCU 协同推理、控制决策和实时通信的工程架构。
+          </p>
+          <div class="progress-track">
+            <span style="width: 28%"></span>
+          </div>
+          <div class="progress-meta">
+            <span>PROGRESS</span>
+            <span>28%</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 07 CONTACT -->
+    <section class="section contact-section" id="contact">
+      <div class="section-heading reveal">
+        <span class="section-index">07</span>
+        <div>
+          <p class="section-kicker">CONTACT</p>
+          <h2>建立连接</h2>
+        </div>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-copy reveal">
+          <p>
+            适合交流的方向包括嵌入式系统、FPGA、高速通信、
+            机器人平台、AI 工具与技术产品合作。
+          </p>
+          <a
+            class="button button-primary"
+            href="mailto:your-email@example.com"
+          >
+            SEND EMAIL
+            <span>↗</span>
+          </a>
+        </div>
+
+        <div class="terminal reveal">
+          <div class="terminal-header">
+            <div>
+              <span></span><span></span><span></span>
+            </div>
+            <span>contact.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> contact kong_qingxiang</p>
+            <p><span class="key">github</span> <a href="https://github.com/kongqingxiang1992" target="_blank" rel="noreferrer">github.com/kongqingxiang1992</a></p>
+            <p><span class="key">email</span> <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+            <p><span class="key">location</span> nanjing, china</p>
+            <p><span class="key">status</span> open_to_collaboration</p>
+            <p class="terminal-cursor"><span class="prompt">$</span> <i></i></p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div>
+      <span>KQ SYSTEMS LAB</span>
+      <span>© 2026 KONG QINGXIANG</span>
+    </div>
+    <a href="#hero">BACK TO TOP ↑</a>
+  </footer>
+
+  <script src="./script.js"></script>
 </body>
 </html>
