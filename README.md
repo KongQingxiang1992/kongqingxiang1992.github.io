@@ -1,6 +1,6 @@
 # KQ Systems Lab
 
-孔庆翔github静态网站
+这是一个可直接部署到 GitHub Pages 的静态个人网站。
 
 ## 文件结构
 
@@ -99,3 +99,7 @@ https://kongqingxiang1992.github.io
 ```
 
 然后为每个项目建立单独页面。
+
+## 中英文切换
+
+右上角提供 `EN / 中文` 按钮，并使用 localStorage 保存选择。
