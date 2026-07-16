@@ -1,11 +1,11 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="My Systems Lab — 嵌入式系统、FPGA、机器人与 AI 应用个人作品网站"
+    content="KQ Systems Lab — 嵌入式系统、FPGA、机器人与 AI 应用个人作品网站"
   />
   <title>KQ Systems Lab</title>
 
@@ -30,28 +30,34 @@
       <span class="brand-text">SYSTEMS LAB</span>
     </a>
 
-    <nav class="desktop-nav" aria-label="主导航">
-      <a href="#about">关于</a>
-      <a href="#system-map">能力图谱</a>
-      <a href="#projects">项目</a>
-      <a href="#experience">经历</a>
-      <a href="#lab">实验室</a>
-      <a href="#contact">联系</a>
-    </nav>
+    <div class="header-actions">
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="#about" data-i18n="nav.about">关于</a>
+        <a href="#system-map" data-i18n="nav.skills">能力图谱</a>
+        <a href="#projects" data-i18n="nav.projects">项目</a>
+        <a href="#experience" data-i18n="nav.experience">经历</a>
+        <a href="#lab" data-i18n="nav.lab">实验室</a>
+        <a href="#contact" data-i18n="nav.contact">联系</a>
+      </nav>
 
-    <button class="menu-button" id="menuButton" aria-label="打开菜单">
-      <span></span>
-      <span></span>
-    </button>
+      <button class="language-button" id="languageButton" type="button" aria-label="切换语言">
+        <span id="languageLabel">EN</span>
+      </button>
+
+      <button class="menu-button" id="menuButton" aria-label="打开菜单">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about">关于</a>
-    <a href="#system-map">能力图谱</a>
-    <a href="#projects">项目</a>
-    <a href="#experience">经历</a>
-    <a href="#lab">实验室</a>
-    <a href="#contact">联系</a>
+    <a href="#about" data-i18n="nav.about">关于</a>
+    <a href="#system-map" data-i18n="nav.skills">能力图谱</a>
+    <a href="#projects" data-i18n="nav.projects">项目</a>
+    <a href="#experience" data-i18n="nav.experience">经历</a>
+    <a href="#lab" data-i18n="nav.lab">实验室</a>
+    <a href="#contact" data-i18n="nav.contact">联系</a>
   </div>
 
   <main>
@@ -61,31 +67,30 @@
         <div class="hero-copy reveal">
           <div class="eyebrow">
             <span class="status-dot"></span>
-            ENGINEERING SYSTEMS FOR THE REAL WORLD
+            <span data-i18n="hero.eyebrow">面向真实世界构建工程系统</span>
           </div>
 
           <h1>
             KONG<br />
             <span>QINGXIANG</span>
-            孔庆翔<br />
           </h1>
 
-          <p class="hero-subtitle">
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
             嵌入式系统 · FPGA · 机器人 · AI 应用
           </p>
 
-          <p class="hero-description">
+          <p class="hero-description" data-i18n="hero.description">
             我关注硬件、通信、软件与产品之间的连接，
             并将复杂系统转化为可运行、可验证、可交付的工程产品。
           </p>
 
           <div class="hero-actions">
             <a class="button button-primary" href="#projects">
-              查看项目
+              <span data-i18n="hero.projectsButton">查看项目</span>
               <span>↗</span>
             </a>
             <a class="button button-secondary" href="#system-map">
-              浏览能力图谱
+              <span data-i18n="hero.skillsButton">浏览能力图谱</span>
             </a>
           </div>
 
@@ -162,17 +167,17 @@
         <span class="section-index">02</span>
         <div>
           <p class="section-kicker">ABOUT</p>
-          <h2>从底层通信到完整产品</h2>
+          <h2 data-i18n="about.title">从底层通信到完整产品</h2>
         </div>
       </div>
 
       <div class="about-layout">
         <div class="about-lead reveal">
-          <p>
+          <p data-i18n="about.paragraph1">
             我是一名系统型工程师，工作内容跨越嵌入式软件、FPGA、
             高速通信、机器人控制与产品开发。
           </p>
-          <p>
+          <p data-i18n="about.paragraph2">
             我擅长把分散的硬件、协议、算法和服务整合为完整系统，
             并关注可靠性、实时性、可维护性与实际交付效果。
           </p>
@@ -202,7 +207,7 @@
         <span class="section-index">03</span>
         <div>
           <p class="section-kicker">SYSTEM MAP</p>
-          <h2>技术能力图谱</h2>
+          <h2 data-i18n="skills.title">技术能力图谱</h2>
         </div>
       </div>
 
@@ -210,7 +215,7 @@
         <div class="map-sidebar" role="tablist">
           <button class="map-tab active" data-target="embedded">
             <span>01</span>
-            Embedded
+            <span data-i18n="skills.embeddedTab">嵌入式</span>
           </button>
           <button class="map-tab" data-target="fpga">
             <span>02</span>
@@ -218,11 +223,11 @@
           </button>
           <button class="map-tab" data-target="robotics">
             <span>03</span>
-            Robotics
+            <span data-i18n="skills.roboticsTab">机器人</span>
           </button>
           <button class="map-tab" data-target="product">
             <span>04</span>
-            Product
+            <span data-i18n="skills.productTab">产品工程</span>
           </button>
         </div>
 
@@ -316,7 +321,7 @@
         <span class="section-index">04</span>
         <div>
           <p class="section-kicker">SELECTED WORK</p>
-          <h2>代表项目</h2>
+          <h2 data-i18n="projects.title">代表项目</h2>
         </div>
       </div>
 
@@ -329,8 +334,8 @@
               <span>PRODUCT SYSTEM</span>
               <span>2026</span>
             </div>
-            <h3>FIFA 世界杯中文数据平台</h3>
-            <p>
+            <h3 data-i18n="projects.worldcup.title">FIFA 世界杯中文数据平台</h3>
+            <p data-i18n="projects.worldcup.description">
               集成赛程、球队、球员、技术统计、实时比分与出线计算，
               采用微信小程序、Node.js、SQLite/MySQL 和 WebSocket 构建。
             </p>
@@ -343,7 +348,7 @@
             </div>
 
             <a href="#" class="project-link">
-              VIEW CASE STUDY
+              <span data-i18n="common.viewCase">查看项目详情</span>
               <span>↗</span>
             </a>
           </div>
@@ -376,8 +381,8 @@
               <span>FPGA SYSTEM</span>
               <span>2025</span>
             </div>
-            <h3>FPGA 高速 LVDS 数据链路</h3>
-            <p>
+            <h3 data-i18n="projects.fpga.title">FPGA 高速 LVDS 数据链路</h3>
+            <p data-i18n="projects.fpga.description">
               构建 FT232H 到 FPGA、再到外设的高速数据通路，
               实现帧同步、协议解析、CRC 校验与多模块分发。
             </p>
@@ -390,7 +395,7 @@
             </div>
 
             <a href="#" class="project-link">
-              VIEW CASE STUDY
+              <span data-i18n="common.viewCase">查看项目详情</span>
               <span>↗</span>
             </a>
           </div>
@@ -415,8 +420,8 @@
               <span>ROBOTICS</span>
               <span>2026</span>
             </div>
-            <h3>ROS2 移动机器人底层控制系统</h3>
-            <p>
+            <h3 data-i18n="projects.robot.title">ROS2 移动机器人底层控制系统</h3>
+            <p data-i18n="projects.robot.description">
               面向四轮移动机器人构建电机控制、编码器反馈、
               CAN 通信、里程计、TF 与 Nav2 导航闭环。
             </p>
@@ -429,7 +434,7 @@
             </div>
 
             <a href="#" class="project-link">
-              VIEW CASE STUDY
+              <span data-i18n="common.viewCase">查看项目详情</span>
               <span>↗</span>
             </a>
           </div>
@@ -453,8 +458,8 @@
               <span>AI PRODUCT</span>
               <span>2026</span>
             </div>
-            <h3>长篇小说 AI 编写器</h3>
-            <p>
+            <h3 data-i18n="projects.ai.title">长篇小说 AI 编写器</h3>
+            <p data-i18n="projects.ai.description">
               面向 800–1000 章长篇小说，构建角色、世界观、剧情线、
               章节状态与多模型 API 调度系统。
             </p>
@@ -467,7 +472,7 @@
             </div>
 
             <a href="#" class="project-link">
-              VIEW CASE STUDY
+              <span data-i18n="common.viewCase">查看项目详情</span>
               <span>↗</span>
             </a>
           </div>
@@ -493,7 +498,7 @@
         <span class="section-index">05</span>
         <div>
           <p class="section-kicker">EXPERIENCE</p>
-          <h2>工程经历</h2>
+          <h2 data-i18n="experience.title">工程经历</h2>
         </div>
       </div>
 
@@ -546,7 +551,7 @@
         <span class="section-index">06</span>
         <div>
           <p class="section-kicker">CURRENT LAB</p>
-          <h2>正在构建</h2>
+          <h2 data-i18n="lab.title">正在构建</h2>
         </div>
       </div>
 
@@ -614,21 +619,21 @@
         <span class="section-index">07</span>
         <div>
           <p class="section-kicker">CONTACT</p>
-          <h2>建立连接</h2>
+          <h2 data-i18n="contact.title">建立连接</h2>
         </div>
       </div>
 
       <div class="contact-layout">
         <div class="contact-copy reveal">
-          <p>
+          <p data-i18n="contact.description">
             适合交流的方向包括嵌入式系统、FPGA、高速通信、
             机器人平台、AI 工具与技术产品合作。
           </p>
           <a
             class="button button-primary"
-            href="mailto:240742751@qq.com / richardkongqingxiang@gmail.com"
+            href="mailto:240742751@qq.com"
           >
-            SEND EMAIL
+            <span data-i18n="contact.emailButton">发送邮件</span>
             <span>↗</span>
           </a>
         </div>
@@ -640,35 +645,14 @@
             </div>
             <span>contact.sh</span>
           </div>
-
           <div class="terminal-body">
-          <p><span class="prompt">$</span> contact kong_qingxiang</p>
-        
-          <p>
-            <span class="key">github</span>
-            <a
-              href="https://github.com/kongqingxiang1992"
-              target="_blank"
-              rel="noreferrer"
-            >
-              github.com/kongqingxiang1992
-            </a>
-          </p>
-          <p>
-          <span class="key">email</span>
-          <a href="mailto:240742751@qq.com">
-            240742751@qq.com
-        </a>
-      </p>
-
-  <p><span class="key">location</span> nanjing, china</p>
-  <p><span class="key">status</span> open_to_collaboration</p>
-
-  <p class="terminal-cursor">
-    <span class="prompt">$</span>
-    <i></i>
-  </p>
-</div>
+            <p><span class="prompt">$</span> contact kong_qingxiang</p>
+            <p><span class="key">github</span> <a href="https://github.com/kongqingxiang1992" target="_blank" rel="noreferrer">github.com/kongqingxiang1992</a></p>
+            <p><span class="key">email</span> <a href="mailto:240742751@qq.com">240742751@qq.com</a></p>
+            <p><span class="key">location</span> <span data-i18n="contact.location">中国南京</span></p>
+            <p><span class="key">status</span> <span data-i18n="contact.status">开放技术交流与合作</span></p>
+            <p class="terminal-cursor"><span class="prompt">$</span> <i></i></p>
+          </div>
         </div>
       </div>
     </section>
